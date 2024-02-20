@@ -39,7 +39,7 @@ setup(
     author_email='fracpete@waikato.ac.nz',
     entry_points={
         "ldc.readers": [
-            "ldc-docx-pretrain=ldc_docx.pretrain:ldc.base_io.Reader"
+            "ldc-docx-pretrain=ldc_docx.pretrain:ldc.api.Reader"
         ]
     },
 )
