@@ -11,7 +11,7 @@ from ldc.api.pretrain import PretrainData, PretrainReader
 
 class DOCXPretrainReader(PretrainReader):
     """
-    Extracts text from PDF files to use for pretraining.
+    Extracts text from MS Word .docx files to use for pretraining.
     """
 
     def __init__(self, source: Union[str, List[str]] = None, source_list: Union[str, List[str]] = None,
@@ -63,8 +63,8 @@ class DOCXPretrainReader(PretrainReader):
         :rtype: argparse.ArgumentParser
         """
         parser = super()._create_argparser()
-        parser.add_argument("-i", "--input", type=str, help="Path to the PDF file(s) to read; glob syntax is supported", required=False, nargs="*")
-        parser.add_argument("-I", "--input_list", type=str, help="Path to the text file(s) listing the data files to use", required=False, nargs="*")
+        parser.add_argument("-i", "--input", type=str, help="Path to the MS Word .docx file(s) to read; glob syntax is supported", required=False, nargs="*")
+        parser.add_argument("-I", "--input_list", type=str, help="Path to the text file(s) listing the MS Word .docx files to use", required=False, nargs="*")
         parser.add_argument("--output_paragraphs", action="store_true", help="Whether to output individual paragraphs rather than whole documents.", required=False)
         return parser
 
