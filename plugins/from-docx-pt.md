@@ -20,11 +20,11 @@ optional arguments:
                         The custom name to use for the logger, uses the plugin
                         name by default (default: None)
   -i [INPUT [INPUT ...]], --input [INPUT [INPUT ...]]
-                        Path to the PDF file(s) to read; glob syntax is
-                        supported (default: None)
+                        Path to the MS Word .docx file(s) to read; glob syntax
+                        is supported (default: None)
   -I [INPUT_LIST [INPUT_LIST ...]], --input_list [INPUT_LIST [INPUT_LIST ...]]
-                        Path to the text file(s) listing the data files to use
-                        (default: None)
+                        Path to the text file(s) listing the MS Word .docx
+                        files to use (default: None)
   --output_paragraphs   Whether to output individual paragraphs rather than
                         whole documents. (default: False)
 ```
