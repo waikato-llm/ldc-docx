@@ -100,26 +100,32 @@ class DOCXPretrainReader(PretrainReader):
         self._current_input = self._inputs.pop(0)
         self.session.current_input = self._current_input
         self.logger().info("Reading from: " + str(self.session.current_input))
-        self._current_doc = docx.Document(self.session.current_input)
 
-        if self.output_paragraphs:
-            for i, para in enumerate(self._current_doc.paragraphs):
+        try:
+            self._current_doc = docx.Document(self.session.current_input)
+
+            if self.output_paragraphs:
+                for i, para in enumerate(self._current_doc.paragraphs):
+                    meta = dict()
+                    meta["file"] = self.session.current_input
+                    meta["paragraph"] = i
+                    yield PretrainData(
+                        content=para.text,
+                        meta=meta,
+                    )
+            else:
+                lines = [para.text for para in self._current_doc.paragraphs]
                 meta = dict()
                 meta["file"] = self.session.current_input
-                meta["paragraph"] = i
                 yield PretrainData(
-                    content=para.text,
+                    content="\n".join(lines),
                     meta=meta,
                 )
-        else:
-            lines = [para.text for para in self._current_doc.paragraphs]
-            meta = dict()
-            meta["file"] = self.session.current_input
-            yield PretrainData(
-                content="\n".join(lines),
-                meta=meta,
-            )
-        self._current_doc = None
+            self._current_doc = None
+        except:
+            self.logger().exception("Failed to read from: %s" % self.session.current_input)
+            self._current_doc = None
+            yield None
 
     def has_finished(self) -> bool:
         """
