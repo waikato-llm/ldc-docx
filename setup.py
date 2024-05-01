@@ -38,8 +38,8 @@ setup(
     author='Peter Reutemann',
     author_email='fracpete@waikato.ac.nz',
     entry_points={
-        "ldc.readers": [
-            "ldc-docx-pretrain=ldc_docx.pretrain:ldc.api.Reader"
-        ]
+        "class_lister": [
+            "ldc_docx=ldc_docx.class_lister",
+        ],
     },
 )
