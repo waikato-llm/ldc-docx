@@ -5,11 +5,12 @@ import docx
 
 from wai.logging import LOGGING_WARNING
 from seppl.io import locate_files
+from seppl.placeholders import PlaceholderSupporter, placeholder_list
 from ldc.core import domain_suffix
 from ldc.api.pretrain import PretrainData, PretrainReader
 
 
-class DOCXPretrainReader(PretrainReader):
+class DOCXPretrainReader(PretrainReader, PlaceholderSupporter):
     """
     Extracts text from MS Word .docx files to use for pretraining.
     """
@@ -63,8 +64,8 @@ class DOCXPretrainReader(PretrainReader):
         :rtype: argparse.ArgumentParser
         """
         parser = super()._create_argparser()
-        parser.add_argument("-i", "--input", type=str, help="Path to the MS Word .docx file(s) to read; glob syntax is supported", required=False, nargs="*")
-        parser.add_argument("-I", "--input_list", type=str, help="Path to the text file(s) listing the MS Word .docx files to use", required=False, nargs="*")
+        parser.add_argument("-i", "--input", type=str, help="Path to the MS Word .docx file(s) to read; glob syntax is supported; " + placeholder_list(obj=self), required=False, nargs="*")
+        parser.add_argument("-I", "--input_list", type=str, help="Path to the text file(s) listing the MS Word .docx files to use; " + placeholder_list(obj=self), required=False, nargs="*")
         parser.add_argument("--output_paragraphs", action="store_true", help="Whether to output individual paragraphs rather than whole documents.", required=False)
         return parser
 

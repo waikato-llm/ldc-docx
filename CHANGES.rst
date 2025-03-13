@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - switched to underscores in project name
+- added placeholder support
 
 
 0.0.2 (2024-07-05)
