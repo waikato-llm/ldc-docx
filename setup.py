@@ -34,7 +34,7 @@ setup(
         "llm_dataset_converter>=0.2.4",
         "python-docx",
     ],
-    version="0.0.2",
+    version="0.0.3",
     author='Peter Reutemann',
     author_email='fracpete@waikato.ac.nz',
     entry_points={
