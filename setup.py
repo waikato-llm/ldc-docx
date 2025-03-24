@@ -32,7 +32,7 @@ setup(
     packages=find_namespace_packages(where='src'),
     install_requires=[
         "llm_dataset_converter>=0.2.4",
-        "python-docx",
+        "python_docx",
     ],
     version="0.0.3",
     author='Peter Reutemann',

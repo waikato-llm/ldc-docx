@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.4 (????-??-??)
+------------------
+
+- using `python_docx` instead of `python-docx` as dependency
+
+
 0.0.3 (2025-03-14)
 ------------------
 
